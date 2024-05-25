@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/show.css">
+    <script src="https://kit.fontawesome.com/3627f34669.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <a href="/profile">
+            <img src="https://static.vecteezy.com/system/resources/previews/017/350/132/original/red-cancel-icon-design-png.png" alt="cancel" style="width: 50px; height: 50px;" class="cancel-icon">
+        </a>
+        <img src="/images/uploads/<%= post.image %>" alt="image" id="post-image">
+        <div class="caption">By <%= user.name %></div>
+        <div class="caption"><%= post.date.toLocaleDateString() %></div>
+        
+        <a href="/download/<%= post.image %>" download="<%= post.image %>">
+            <img src="https://www.shutterstock.com/image-vector/download-vector-icon-install-symbol-600nw-584449294.jpg" alt="download" style="width: 100px; height: 100px;" class="download-btn">
+        </a>
+    </div>
+</body>
+</html>

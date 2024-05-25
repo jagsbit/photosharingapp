@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/3627f34669.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/stylesheets/feed.css">
+</head>
+<body>
+  <nav>
+    <div class="logo"></div>
+    <ul class="navLink">
+      <li><a href="/feed">Home</a></li>
+      <li><a href="/createpost">Create</a></li>
+      <li><a href="/profile">Profile</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <% if (posts.length != 0) { %>
+      <% posts.reverse().forEach(function (e) { %>
+        <div class="box">
+          <a href="/show/<%= e._id %>">
+            <img src="/images/uploads/<%= e.image %>" alt="image">
+          </a>
+          <div class="likes">
+            <a href="#" class="like-button" data-post-id="<%= e._id %>" style="color: black;">
+              <% if (e.likes.includes(user._id)) { %>
+                <i class="fa-solid fa-heart"></i>
+              <% } else { %>
+                <i class="fa-regular fa-heart"></i>
+              <% } %>
+            </a>
+            <p class="like-count" data-post-id="<%= e._id %>"><%= e.likes.length %> likes</p>
+          </div>
+          <div class="caption"><%= e.desc %></div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <h5>No post yet</h5>
+    <% } %>
+  </div>
+
+  <!-- Include jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('.like-button').on('click', function(e) {
+        e.preventDefault();
+        const postId = $(this).data('post-id');
+        const $button = $(this);
+        const $likeCount = $(`.like-count[data-post-id='${postId}']`);
+
+        $.ajax({
+          url: `/like/${postId}`,
+          type: 'GET',
+          success: function(response) {
+            if (response.liked) {
+              $button.html('<i class="fa-solid fa-heart"></i>');
+            } else {
+              $button.html('<i class="fa-regular fa-heart"></i>');
+            }
+            $likeCount.text(response.likesCount + ' likes');
+          },
+          error: function(error) {
+            console.error('Error:', error);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

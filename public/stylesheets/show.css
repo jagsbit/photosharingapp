@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensure the body takes the full height of the viewport */
+  background-color: grey;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Take full width of the viewport */
+}
+
+.box {
+  background-color: white; /* Add a background color if needed */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visual */
+  text-align: center; /* Center text and contents inside the box */
+  max-width: 340px; /* Set max-width for the box to ensure consistent sizing */
+}
+
+.box img {
+  width: 100%;  
+  height: auto;  
+  object-fit: cover; 
+  border-radius: 10px;
+  margin-bottom: 10px;  
+}
+
+.likes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Optional: Add space between like button and like count */
+}
+
+.caption {
+  margin-top: 5px; /* Add space above the caption */
+  font-size: 16px; /* Adjust font size as needed */
+}
+
+.save-btn {
+  display: inline-block; /* Ensure it behaves as an inline-block element */
+  text-decoration: none;
+  height: 30px; /* Adjust the height as needed */
+  line-height: 30px; /* Vertically center the text */
+  width: 70px;  
+  background-color: red;
+  color: white;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 5px;
+  padding: 0; /* Remove padding to avoid conflict with height */
+}

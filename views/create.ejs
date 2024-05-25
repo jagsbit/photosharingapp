@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/create.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            
+        </div>
+        <ul class="navLink">
+         <li><a href="/feed">Home</a></li>
+         <li><a href="/createpost">Create</a></li>
+          <li><a href="/profile">Profile</a></li>
+        </ul>
+       
+      </nav>
+    <form action="/upload" method="post" class="form" enctype="multipart/form-data">
+        <input type="file" name="file"  id="">
+        <input type="text" name="desc" placeholder="description" style="height: 30px; border: none; background-color: #dadada; border-radius: 20px; text-align: center; width: 150px;">
+        <input type="submit" value="create" style="height: 30px; width: 70px; background-color: blue; color: white; border-radius: 20px; text-align: center; border: none;">
+</form>
+   <div class="container">
+     
+             
+    <%
+    if(user.posts.length!=0){
+     user.posts.reverse().forEach(function(post){
+      %>
+      <div class="my-post">
+          
+          <img src="/images/uploads/<%=post.image%>" alt="" class="img">
+          <p class="caption"><%=post.desc%></p>
+          <p class="caption"><%= post.date.toLocaleDateString() %></p>
+          <div class="likes">
+              <p>Likes :</p>
+              <p><%=post.likes.length%></p>
+              <a href="/delete/<%=post._id%>" class="delete">Delete</a> 
+          </div>
+          <div class="btn">
+               
+          </div>
+      </div>
+      <%
+    })
+    }
+    else{
+      %> <h5>No Post Yet</h5><%
+    }
+ %>
+   </div>
+</body>
+</html>

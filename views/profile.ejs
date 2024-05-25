@@ -1,0 +1,130 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <style>
+        *
+{
+  margin: 0;
+  padding: 0;
+	background-color:white;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad          Pro", "DejaVu Sans Condensed", Helvetica, Arial,        "sans-serif";
+}
+
+
+nav{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	min-height: 10vh;
+	background-color: #dadada;
+	position: fixed;
+	width: 100%;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	z-index: 1;
+	opacity: 0.9;
+}
+
+.logo{
+	color: #49ffd0;
+	letter-spacing: 25px;
+	font-size: 20px;
+	background-color: #dadada;
+}
+
+.navLink{
+	display: flex;
+	justify-content: space-around;
+	width: 40%;
+	background-color:  #dadada;
+	}
+	
+.navLink li{
+	list-style: none;
+	background-color: #000000;
+}
+
+.navLink a{
+	color: #000000;
+	text-decoration: none;
+	letter-spacing: 2px;
+	font-size: 16px;
+	background-color: #dadada;
+}
+
+.navLink a:hover{
+   color: #000000;
+}
+    </style>
+</head>
+
+<!-- Change code below this line -->
+
+<body>
+    <nav>
+        <div class="logo">
+             <img src="" alt="">
+        </div>
+        <ul class="navLink">
+         <li><a href="/feed">Home</a></li>
+         <li><a href="/createpost">Create</a></li>
+          <li><a href="/profile">Profile</a></li>
+        </ul>
+       
+      </nav>
+    <div class="profile-card">
+      
+        <div class="avatar"><img src="/images/uploads/<%=user.profileImage%>" alt="profile-img"></div>
+        
+        <div class="salutation">
+            <div class="name"><%=user.name%></div>
+            <div class="designation"><%=user.email%></div>
+            <div class="designation"><%=user.bio%></div>
+        </div>
+        <div class="options">
+            <a href="/editprofile/<%=user._id%>" class="edit">Edit Profile</a>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+       
+        
+    </div>
+    <h3><u>Saved</u></h3>
+    <div class="saved-post">
+        <%
+        if(user.boards.length!=0){
+         user.boards.reverse().forEach(function(board){
+          %>
+          <div class="my-post">
+              
+              <a href="/showshave/<%=board._id%>">
+                <img src="/images/uploads/<%=board.image%>" alt="" class="img">
+              </a>
+              <p class="caption"><%=board.desc%></p>
+              <!-- <p class="caption"><%= board.date.toLocaleDateString() %></p> -->
+              <div class="likes">
+                  <p>Likes :</p>
+                  <p><%=board.likes.length%></p>
+                  <a href="/deleteboard/<%=board._id%>" class="delete">Delete</a> 
+              </div>
+              <div class="btn">
+                   
+              </div>
+          </div>
+          <%
+        })
+        }
+        
+     %>
+    </div>
+    <script src="/javascripts/profile.js"></script>
+</body>
+<!-- Change code above this line -->
+
+</html>

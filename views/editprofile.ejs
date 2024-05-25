@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/editprofile.css">
+    <title>Document</title>
+</head>
+<body>
+      <div class="box">
+           
+          <form action="/editprofile/:<%=user._id%>" class="edit" method="post"  enctype="multipart/form-data">
+                     <h3>About You</h3>
+                     <input type="text" name="name" id="" value="<%=user.name%>" class="inp-txt">
+                     <input type="text" name="email" value="<%=user.email%>" class="inp-txt">
+                     <input type="text" name="bio" placeholder="write your bio" value="<%=user.bio%>" class="inp-txt">
+                     <h5>Profile Pic</h5>
+                     <input type="file" name="file"  id="" >
+                     <input type="submit" value="Save" style="height: 30px; width: 70px; background-color: red; color: white; border-radius: 20px; text-align: center; border: none;">
+
+          </form>
+      </div>
+</body>
+</html>
